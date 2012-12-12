@@ -1,5 +1,21 @@
 <?php 
+/*
+ * WebexAPI.class.php
+ * 
+ * @author Joshua E Hoegen
+ * 
+ * TODO: Anything to speed up requests to WebEx API.
+ * 
+ */
 class WebexAPI {
+ /**
+ * WebexAPI()
+ *
+ * @param	$api_creds - array/object of webex xml values
+ * 
+ * @return	NOTHING.  more or less init();
+ * 
+ */
   function WebexAPI($api_creds) {
     if (is_array($api_creds)) {
       $api_creds = (object) $api_creds;
@@ -32,6 +48,12 @@ class WebexAPI {
     
   }
   
+ /**
+ * buildXML()
+ * 
+ * @return	(string) structured xml with required values;
+ * 
+ */
   private function buildXML() {
     $webex_post = new stdClass;
     $webex_post->UID = $this->webex_user;
@@ -69,6 +91,12 @@ class WebexAPI {
     return $webex_post;
   }
   
+ /**
+ * postXML()
+ * 
+ * @return	(string) response from post;
+ * 
+ */
   private function postXML() {
     $post_data = $this->buildXML();
     $post_url = $this->webex_protocol.'://'.$this->webex_url . '.webex.com/WBXService/XMLService';
@@ -94,6 +122,12 @@ class WebexAPI {
     return $response;
   }
   
+ /**
+ * getWebex()
+ * 
+ * @return	(onject) parsed xml as php object;
+ * 
+ */  
   function getWebex() {
     $events = false;
     $event_type = strtolower($this->webex_list_type);
@@ -105,11 +139,28 @@ class WebexAPI {
     }
     return $events;
   }
-
+  
+ /**
+ * groupWebex()
+ *
+ * @param	$goup1 - (string) sort priority 1
+ * @param	$goup2 - (string) sort priority 2
+ * 
+ * @return	(object) structured tree by date or title;
+ * 
+ */ 
   function groupWebex($goup1, $group2){
   	
   }
   
+ /**
+ * getSessionRegistrationLink()
+ *
+ * @param	$session_key - (string/int) sessionKey
+ * 
+ * @return	(string) link to registration page;
+ * 
+ */
   function getSessionRegistrationLink($session_key) {
     return $this->webex_protocol.'://'.$this->webex_url.'.webex.com/'.$this->webex_url.'/e.php?AT=SINF&MK='.$session_key;
   }
