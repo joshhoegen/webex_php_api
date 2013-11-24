@@ -2,6 +2,8 @@ WebEx API wrapper class
 
 @author Joshua E Hoegen
  ----------------------------------
+ - Project being maintained with a Drupal module @ https://drupal.org/node/1870404
+ - I will update the standalone, here ocassionally.
  - Turning the crypticly documented WebEx API into a robust tool in PHP.  
  
 Usage
