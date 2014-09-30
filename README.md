@@ -1,6 +1,5 @@
 WebEx API wrapper class
 
-@author Joshua E Hoegen
  ----------------------------------
  - Turning the crypticly documented WebEx API into a robust tool in PHP.  
  
